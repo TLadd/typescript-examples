@@ -1,0 +1,7 @@
+{
+  "name": "typescript-demos",
+  "packageManager": "yarn@3.3.0",
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  }
+}
