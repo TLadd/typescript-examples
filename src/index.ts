@@ -127,6 +127,23 @@ export function stripNull<T extends object>(someObj: T): ConvertToNonNull<T> {
 }
 //#endregion Conditional Types
 
+//#region Utility Types
+type UtilityDemoX = { a: string; b: number; c: boolean };
+type UtilityDemoY = Omit<UtilityDemoX, "a" | "b">;
+type UtilityDemoZ = Pick<UtilityDemoX, "a" | "b">;
+
+interface EventListenerMap {
+  atsRetrieveEnvelopeSet?: (() => unknown)[];
+  authStatusChanged?: ((params: { a: string }) => unknown)[];
+  loaded?: ((params: { b: number }) => unknown)[];
+}
+type EventName2 = keyof EventListenerMap;
+type EventListenerCb<E extends EventName2> = NonNullable<
+  EventListenerMap[E]
+>[number];
+type EventData<E extends EventName2> = Parameters<EventListenerCb<E>>;
+//#endregion Utility Types
+
 //#region Function overloading
 export function getMonthDayYearDateString(date: null): null;
 export function getMonthDayYearDateString(date: undefined): null;
