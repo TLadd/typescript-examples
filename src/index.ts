@@ -141,7 +141,7 @@ type EventName2 = keyof EventListenerMap;
 type EventListenerCb<E extends EventName2> = NonNullable<
   EventListenerMap[E]
 >[number];
-type EventData<E extends EventName2> = Parameters<EventListenerCb<E>>;
+type EventData<E extends EventName2> = Parameters<EventListenerCb<E>>[0];
 //#endregion Utility Types
 
 //#region Function overloading
